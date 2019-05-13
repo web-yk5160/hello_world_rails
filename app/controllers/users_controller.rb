@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
- before_action :set_user, only: [:show, :udapte, :destroy]
+ before_action :set_user, only: [:show, :update, :destroy]
 
   def index
     @users = User.all
-    render json: @users
+    # render json: @users
   end
 
   def show
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update!(user_params)
+
  end
 
  def destroy
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
 
  private
    def user_params
-     params.require(:user).permit(:account, :name, :email)
+    params.require(:user).permit(:account, :name, :email)
    end
 
    def set_user
